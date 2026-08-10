@@ -1,0 +1,865 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9175122256316495544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 456c7c2b477e4253b9e4faf9ed4b18a9, type: 3}
+  m_Name: InstructionsParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.InstructionsParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 0
+    m_UnmaskedViews: []
+    MaskPreset: {fileID: 0}
+  Title:
+    m_Untranslated: Instructions
+  Text:
+    m_Untranslated: "<b>1.  Zip up your build folder:</b>\n\n\_\_\_\_<b>\u2022</b>
+      Locate the folder you just built (Windows: <b>WebBuilds</b>), (macOS: <b>[YourGameName]
+      build 1.0</b>), then compress it into a zip folder. \n\n\_\_\_\_\_\_\_\_<b>\u25E6</b>
+      On Windows, right-click the folder and select <b>Send to</b> > <b>Compressed
+      (zipped) folder</b>. \n\n\_\_\_\_\_\_\_\_<b>\u25E6</b> On macOS, right-click
+      and select <b>Compress [Folder Name]</b>.\n\nThis will create a new <b>.zip</b>
+      file that you can upload to Unity Play.\n\n<b>2.  Upload your build zip file
+      to Unity Play:</b>\n\n\_\_\_\_<b>\u2022</b> Go to the <a href=\"https://play.unity.com/en/upload\">Unity
+      Play upload page</a> (you\u2019ll need to be signed in with your Unity account).\n\n\_\_\_\_<b>\u2022</b>
+      Drag and drop your zip file onto the upload area and wait for it to process.
+      \n\n\_\_\_\_<b>\u2022</b> Edit the <b>Title</b>, <b>Description</b>, and <b>Visibility</b>
+      of your project.\n\n\_\_\_\_<b>\u2022</b> Select <b>Save</b> to publish your
+      game.\n\n\nYour game is now live on Unity Play, making it accessible for others
+      to play and test!"
+  m_CriteriaCompletion: 0
+  m_Criteria:
+    m_Items: []
+--- !u!114 &-9132899720365140345
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935228c0fd2628c4db5028980babef0b, type: 3}
+  m_Name: NarrativeParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.NarrativeParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 0
+    m_UnmaskedViews: []
+    MaskPreset: {fileID: 0}
+  Text:
+    m_Untranslated: "Publishing a Unity project lets you share your game on different
+      platforms, like mobile and web.\n\nIn this tutorial, you'll build your project
+      for the Web platform so that anyone with the link can instantly and easily
+      play your game. You\u2019ll then publish your game to <b>Unity Play</b>, Unity\u2019s
+      free web hosting platform."
+--- !u!114 &-8350320501555383831
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b43af98cf241a48618341008f648cb, type: 3}
+  m_Name: MediaParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.MediaParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 1
+    m_UnmaskedViews:
+    - m_SelectorType: 1
+      m_ViewType:
+        m_TypeName: 
+      m_OpenAndFocus: 0
+      m_EditorWindowType:
+        m_TypeName: UnityEditor.Build.Profile.BuildProfileWindow, UnityEditor.BuildProfileModule,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      m_AlternateEditorWindowTypes:
+        m_Items: []
+      m_MaskType: 0
+      m_MaskSizeModifier: 0
+      m_UnmaskedControls: []
+    - m_SelectorType: 1
+      m_ViewType:
+        m_TypeName: 
+      m_OpenAndFocus: 0
+      m_EditorWindowType:
+        m_TypeName: UnityEditor.WebGL.UnityPlay.UnityPlayUploadWindow, UnityEditor.WebGL.Extensions,
+          Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+      m_AlternateEditorWindowTypes:
+        m_Items: []
+      m_MaskType: 0
+      m_MaskSizeModifier: 0
+      m_UnmaskedControls: []
+    MaskPreset: {fileID: 0}
+  Media:
+    m_ContentType: 0
+    m_Image: {fileID: 2800000, guid: ac8910c813bcd7545a6cedb6caf0c1d8, type: 3}
+    m_VideoClip: {fileID: 0}
+    m_Url: https://storage.googleapis.com/learn-media-public/Essentials-Pathway/6.2%20-%20Publish%20to%20WebGL/6.2.4_publish-to-play.webm
+    m_AutoStart: 0
+    m_Loop: 0
+--- !u!114 &-8139987125992679927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff771ccdf4150419d9ff4d342b069aae, type: 3}
+  m_Name: 3_Publish_to_Unity_Play
+  m_EditorClassIdentifier: 
+  <IndexInTutorial>k__BackingField: 3
+  Title:
+    m_Untranslated: Publish to Unity Play
+  m_LegacyParagraphs:
+    m_Items: []
+  m_PageParagraphs:
+  - {fileID: -8350320501555383831}
+  - {fileID: -7550490360958446122}
+  - {fileID: -9175122256316495544}
+  m_CameraSettings:
+    m_CameraMode: 0
+    m_FocusMode: 0
+    m_Orthographic: 0
+    m_Size: 0
+    m_Pivot: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0, w: 0}
+    m_FrameObject:
+      m_SceneGuid: 
+      m_GameObjectGuid: 
+      m_SerializedComponentType:
+        m_TypeName: 
+      m_ComponentIndex: 0
+      m_AssetObject: {fileID: 0}
+      m_Prefab: {fileID: 0}
+    m_Enabled: 0
+  NextButton:
+    m_Untranslated: Next
+  DoneButton:
+    m_Untranslated: Done
+  m_CompletedSound: {fileID: 0}
+  m_FaqEntries: []
+  m_AutoAdvance: 0
+  Showing:
+    m_PersistentCalls:
+      m_Calls: []
+  Shown:
+    m_PersistentCalls:
+      m_Calls: []
+  Staying:
+    m_PersistentCalls:
+      m_Calls: []
+  CriteriaValidated:
+    m_PersistentCalls:
+      m_Calls: []
+  MaskingSettingsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  NonMaskingSettingsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnBeforePageShown:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnAfterPageShown:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnTutorialPageStay:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnBeforeTutorialQuit:
+    m_PersistentCalls:
+      m_Calls: []
+  m_NextButton: Next
+  m_DoneButton: Done
+--- !u!114 &-7550490360958446122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935228c0fd2628c4db5028980babef0b, type: 3}
+  m_Name: NarrativeParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.NarrativeParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 0
+    m_UnmaskedViews: []
+    MaskPreset: {fileID: 0}
+  Text:
+    m_Untranslated: With your build complete, you're ready to publish it to <b>Unity
+      Play</b>, allowing you to play your project online and easily share it with
+      others.
+--- !u!114 &-6697084587445119884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff771ccdf4150419d9ff4d342b069aae, type: 3}
+  m_Name: 2_Build_your_project
+  m_EditorClassIdentifier: 
+  <IndexInTutorial>k__BackingField: 2
+  Title:
+    m_Untranslated: Build your project
+  m_LegacyParagraphs:
+    m_Items: []
+  m_PageParagraphs:
+  - {fileID: 7395648150032199271}
+  - {fileID: -3931710267673032999}
+  - {fileID: 8464321552878001062}
+  m_CameraSettings:
+    m_CameraMode: 0
+    m_FocusMode: 0
+    m_Orthographic: 0
+    m_Size: 0
+    m_Pivot: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0, w: 0}
+    m_FrameObject:
+      m_SceneGuid: 
+      m_GameObjectGuid: 
+      m_SerializedComponentType:
+        m_TypeName: 
+      m_ComponentIndex: 0
+      m_AssetObject: {fileID: 0}
+      m_Prefab: {fileID: 0}
+    m_Enabled: 0
+  NextButton:
+    m_Untranslated: Next
+  DoneButton:
+    m_Untranslated: Done
+  m_CompletedSound: {fileID: 0}
+  m_FaqEntries: []
+  m_AutoAdvance: 0
+  Showing:
+    m_PersistentCalls:
+      m_Calls: []
+  Shown:
+    m_PersistentCalls:
+      m_Calls: []
+  Staying:
+    m_PersistentCalls:
+      m_Calls: []
+  CriteriaValidated:
+    m_PersistentCalls:
+      m_Calls: []
+  MaskingSettingsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  NonMaskingSettingsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnBeforePageShown:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnAfterPageShown:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnTutorialPageStay:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnBeforeTutorialQuit:
+    m_PersistentCalls:
+      m_Calls: []
+  m_NextButton: Next
+  m_DoneButton: Done
+--- !u!114 &-4550397060722844644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b43af98cf241a48618341008f648cb, type: 3}
+  m_Name: MediaParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.MediaParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 0
+    m_UnmaskedViews:
+    - m_SelectorType: 1
+      m_ViewType:
+        m_TypeName: 
+      m_OpenAndFocus: 0
+      m_EditorWindowType:
+        m_TypeName: Unity.Play.Publisher.Editor.PublisherWindow, Unity.Play.Publisher.Editor,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      m_AlternateEditorWindowTypes:
+        m_Items: []
+      m_MaskType: 0
+      m_MaskSizeModifier: 0
+      m_UnmaskedControls: []
+    MaskPreset: {fileID: 0}
+  Media:
+    m_ContentType: 0
+    m_Image: {fileID: 2800000, guid: 26cab74c733b1464c8ca2536ad6ae12a, type: 3}
+    m_VideoClip: {fileID: 0}
+    m_Url: 
+    m_AutoStart: 1
+    m_Loop: 1
+--- !u!114 &-3931710267673032999
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935228c0fd2628c4db5028980babef0b, type: 3}
+  m_Name: NarrativeParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.NarrativeParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 0
+    m_UnmaskedViews: []
+    MaskPreset: {fileID: 0}
+  Text:
+    m_Untranslated: "Now that you've switched platforms, you can create a build of
+      your project. \n\nA <b>build</b> is a packaged, playable version of your game
+      that you create when you want people to play it outside the Unity Editor."
+--- !u!114 &-3909040318730600631
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935228c0fd2628c4db5028980babef0b, type: 3}
+  m_Name: NarrativeParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.NarrativeParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 0
+    m_UnmaskedViews: []
+    MaskPreset: {fileID: 0}
+  Text:
+    m_Untranslated: "Unity allows you to publish a single project to many different
+      platforms, including mobile, console, desktop, web, and more. \n\nTo publish
+      your project to the Web, you first need to switch to that platform."
+--- !u!114 &-2962351939993877835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff771ccdf4150419d9ff4d342b069aae, type: 3}
+  m_Name: 4_Test_your_game
+  m_EditorClassIdentifier: 
+  <IndexInTutorial>k__BackingField: 4
+  Title:
+    m_Untranslated: Test your game
+  m_LegacyParagraphs:
+    m_Items: []
+  m_PageParagraphs:
+  - {fileID: -4550397060722844644}
+  - {fileID: 7202065397371531222}
+  - {fileID: 2191058723347295557}
+  m_CameraSettings:
+    m_CameraMode: 0
+    m_FocusMode: 0
+    m_Orthographic: 0
+    m_Size: 0
+    m_Pivot: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0, w: 0}
+    m_FrameObject:
+      m_SceneGuid: 
+      m_GameObjectGuid: 
+      m_SerializedComponentType:
+        m_TypeName: 
+      m_ComponentIndex: 0
+      m_AssetObject: {fileID: 0}
+      m_Prefab: {fileID: 0}
+    m_Enabled: 0
+  NextButton:
+    m_Untranslated: Next
+  DoneButton:
+    m_Untranslated: Done
+  m_CompletedSound: {fileID: 0}
+  m_FaqEntries: []
+  m_AutoAdvance: 0
+  Showing:
+    m_PersistentCalls:
+      m_Calls: []
+  Shown:
+    m_PersistentCalls:
+      m_Calls: []
+  Staying:
+    m_PersistentCalls:
+      m_Calls: []
+  CriteriaValidated:
+    m_PersistentCalls:
+      m_Calls: []
+  MaskingSettingsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  NonMaskingSettingsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnBeforePageShown:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnAfterPageShown:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnTutorialPageStay:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnBeforeTutorialQuit:
+    m_PersistentCalls:
+      m_Calls: []
+  m_NextButton: Next
+  m_DoneButton: Done
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f107dc6d4c984c45bdafd3bb15f98f0, type: 3}
+  m_Name: Tut 6.2
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  TutorialTitle:
+    m_Untranslated: Publish to WebGL
+  m_LessonId: 3d2235c5-8bec-4d30-bea3-8343b3ecc2a8
+  m_Pages:
+    m_Items:
+    - {fileID: 5813347131601005912}
+    - {fileID: 4217797629399363288}
+    - {fileID: -6697084587445119884}
+    - {fileID: -8139987125992679927}
+    - {fileID: -2962351939993877835}
+  m_SceneManagementBehavior: 1
+  m_ReturnToPreviousScenes: 0
+  m_Scenes: []
+  m_DefaultSceneCameraSettings:
+    m_CameraMode: 1
+    m_FocusMode: 0
+    m_Orthographic: 0
+    m_Size: 0.7414055
+    m_Pivot: {x: 12, y: 8, z: -15}
+    m_Rotation: {x: -0.20906472, y: 0.2526841, z: -0.05601874, w: -0.9430295}
+    m_FrameObject:
+      m_SceneGuid: 
+      m_GameObjectGuid: 
+      m_SerializedComponentType:
+        m_TypeName: 
+      m_ComponentIndex: 0
+      m_AssetObject: {fileID: 0}
+      m_Prefab: {fileID: 0}
+    m_Enabled: 0
+  m_ProgressTrackingEnabled: 1
+  m_WindowLayout: {fileID: 0}
+  CompletionDialog: {fileID: 0}
+  Initiated:
+    m_PersistentCalls:
+      m_Calls: []
+  PageInitiated:
+    m_PersistentCalls:
+      m_Calls: []
+  GoingBack:
+    m_PersistentCalls:
+      m_Calls: []
+  Completed:
+    m_PersistentCalls:
+      m_Calls: []
+  Quit:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Scene: {fileID: 0}
+  m_TutorialTitle: 
+  m_FaqEntries: []
+--- !u!114 &2087444509629563047
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b43af98cf241a48618341008f648cb, type: 3}
+  m_Name: MediaParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.MediaParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 1
+    m_UnmaskedViews:
+    - m_SelectorType: 1
+      m_ViewType:
+        m_TypeName: 
+      m_OpenAndFocus: 1
+      m_EditorWindowType:
+        m_TypeName: UnityEditor.Build.Profile.BuildProfileWindow, UnityEditor.BuildProfileModule,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      m_AlternateEditorWindowTypes:
+        m_Items: []
+      m_MaskType: 0
+      m_MaskSizeModifier: 0
+      m_UnmaskedControls: []
+    MaskPreset: {fileID: 0}
+  Media:
+    m_ContentType: 0
+    m_Image: {fileID: 2800000, guid: 757b42c2a62689d4799b9423b2bbf51c, type: 3}
+    m_VideoClip: {fileID: 0}
+    m_Url: https://storage.googleapis.com/learn-media-public/Essentials-Pathway/6.2%20-%20Publish%20to%20WebGL/6.2.2_switch-to-web.webm
+    m_AutoStart: 0
+    m_Loop: 0
+--- !u!114 &2191058723347295557
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 456c7c2b477e4253b9e4faf9ed4b18a9, type: 3}
+  m_Name: InstructionsParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.InstructionsParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 0
+    m_UnmaskedViews: []
+    MaskPreset: {fileID: 0}
+  Title:
+    m_Untranslated: Instructions
+  Text:
+    m_Untranslated: "<b>1.  Play the game on a desktop browser:</b>\n\n\_\_\_\_<b>\u2022</b>
+      Play your game on Unity Play, making sure movement, actions, and UI elements
+      work as expected.\n\n<b>2.  Fix any issues and re-publish:</b>\n\n\_\_\_\_<b>\u2022</b>
+      If you spot anything you want to improve, make those changes and then re-follow
+      the instructions above to rebuild and re-publish your game.\n\nThe Unity Play
+      link remains the same, so you won\u2019t need to resend to anyone you\u2019ve
+      shared it with after updating.\n\nContinue on to the next tutorial where you
+      can create a brand new unique bonus scene to make your project stand out."
+  m_CriteriaCompletion: 0
+  m_Criteria:
+    m_Items: []
+--- !u!114 &4217797629399363288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff771ccdf4150419d9ff4d342b069aae, type: 3}
+  m_Name: 1_Switch_to_the_Web_platform
+  m_EditorClassIdentifier: 
+  <IndexInTutorial>k__BackingField: 1
+  Title:
+    m_Untranslated: Switch to the Web platform
+  m_LegacyParagraphs:
+    m_Items: []
+  m_PageParagraphs:
+  - {fileID: 2087444509629563047}
+  - {fileID: -3909040318730600631}
+  - {fileID: 4467105629295214304}
+  m_CameraSettings:
+    m_CameraMode: 0
+    m_FocusMode: 0
+    m_Orthographic: 0
+    m_Size: 0
+    m_Pivot: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0, w: 0}
+    m_FrameObject:
+      m_SceneGuid: 
+      m_GameObjectGuid: 
+      m_SerializedComponentType:
+        m_TypeName: 
+      m_ComponentIndex: 0
+      m_AssetObject: {fileID: 0}
+      m_Prefab: {fileID: 0}
+    m_Enabled: 0
+  NextButton:
+    m_Untranslated: Next
+  DoneButton:
+    m_Untranslated: Done
+  m_CompletedSound: {fileID: 0}
+  m_FaqEntries: []
+  m_AutoAdvance: 0
+  Showing:
+    m_PersistentCalls:
+      m_Calls: []
+  Shown:
+    m_PersistentCalls:
+      m_Calls: []
+  Staying:
+    m_PersistentCalls:
+      m_Calls: []
+  CriteriaValidated:
+    m_PersistentCalls:
+      m_Calls: []
+  MaskingSettingsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  NonMaskingSettingsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnBeforePageShown:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnAfterPageShown:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnTutorialPageStay:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnBeforeTutorialQuit:
+    m_PersistentCalls:
+      m_Calls: []
+  m_NextButton: Next
+  m_DoneButton: Done
+--- !u!114 &4467105629295214304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 456c7c2b477e4253b9e4faf9ed4b18a9, type: 3}
+  m_Name: InstructionsParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.InstructionsParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 0
+    m_UnmaskedViews: []
+    MaskPreset: {fileID: 0}
+  Title:
+    m_Untranslated: Instructions
+  Text:
+    m_Untranslated: "<b>1.  Select the Web platform:</b>\n\n\_\_\_\_<b>\u2022</b>
+      If the <b>Build Profiles</b> window is not already open, re-open it (<b>File</b>
+      > <b>Build Profiles</b>).\n\n\_\_\_\_<b>\u2022</b> In the <b>Platforms</b>
+      section, select <b>Web</b>.\n\n<b>2.  Switch platforms:</b>\n\n\_\_\_\_<b>\u2022</b>
+      Select the <b>Switch Platform</b> button and wait for the process to complete.\n\n\_\_\_\_<b>\u2022</b>
+      This process will take a few minutes.\n\n<b>Tip:</b> If the <b>Web</b> platform
+      appears grayed out, select <b>Install with Unity Hub</b> and install the <b>WebGL
+      Build Support</b> module before switching platforms.\n(You have to restart
+      the Editor once install is completed)\n\nAfter this process is complete, your
+      project assets and settings are configured for deployment to the Web platform."
+  m_CriteriaCompletion: 0
+  m_Criteria:
+    m_Items: []
+--- !u!114 &5813347131601005912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff771ccdf4150419d9ff4d342b069aae, type: 3}
+  m_Name: 0_Overview
+  m_EditorClassIdentifier: 
+  <IndexInTutorial>k__BackingField: 0
+  Title:
+    m_Untranslated: Overview
+  m_LegacyParagraphs:
+    m_Items: []
+  m_PageParagraphs:
+  - {fileID: 7807881274511208446}
+  - {fileID: -9132899720365140345}
+  m_CameraSettings:
+    m_CameraMode: 0
+    m_FocusMode: 0
+    m_Orthographic: 0
+    m_Size: 0
+    m_Pivot: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0, w: 0}
+    m_FrameObject:
+      m_SceneGuid: 
+      m_GameObjectGuid: 
+      m_SerializedComponentType:
+        m_TypeName: 
+      m_ComponentIndex: 0
+      m_AssetObject: {fileID: 0}
+      m_Prefab: {fileID: 0}
+    m_Enabled: 0
+  NextButton:
+    m_Untranslated: Next
+  DoneButton:
+    m_Untranslated: Done
+  m_CompletedSound: {fileID: 0}
+  m_FaqEntries: []
+  m_AutoAdvance: 0
+  Showing:
+    m_PersistentCalls:
+      m_Calls: []
+  Shown:
+    m_PersistentCalls:
+      m_Calls: []
+  Staying:
+    m_PersistentCalls:
+      m_Calls: []
+  CriteriaValidated:
+    m_PersistentCalls:
+      m_Calls: []
+  MaskingSettingsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  NonMaskingSettingsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnBeforePageShown:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnAfterPageShown:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnTutorialPageStay:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnBeforeTutorialQuit:
+    m_PersistentCalls:
+      m_Calls: []
+  m_NextButton: Next
+  m_DoneButton: Done
+--- !u!114 &7202065397371531222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935228c0fd2628c4db5028980babef0b, type: 3}
+  m_Name: NarrativeParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.NarrativeParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 0
+    m_UnmaskedViews: []
+    MaskPreset: {fileID: 0}
+  Text:
+    m_Untranslated: "Now that your game is published, it\u2019s time to try it out!
+      This is your chance to see how well everything works, from controls to performance,
+      and make any final tweaks before sharing it with others."
+--- !u!114 &7395648150032199271
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b43af98cf241a48618341008f648cb, type: 3}
+  m_Name: MediaParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.MediaParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 1
+    m_UnmaskedViews:
+    - m_SelectorType: 1
+      m_ViewType:
+        m_TypeName: 
+      m_OpenAndFocus: 0
+      m_EditorWindowType:
+        m_TypeName: UnityEditor.Build.Profile.BuildProfileWindow, UnityEditor.BuildProfileModule,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      m_AlternateEditorWindowTypes:
+        m_Items: []
+      m_MaskType: 0
+      m_MaskSizeModifier: 0
+      m_UnmaskedControls: []
+    - m_SelectorType: 1
+      m_ViewType:
+        m_TypeName: 
+      m_OpenAndFocus: 0
+      m_EditorWindowType:
+        m_TypeName: UnityEditor.Build.Profile.PlatformDiscoveryWindow, UnityEditor.BuildProfileModule,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      m_AlternateEditorWindowTypes:
+        m_Items: []
+      m_MaskType: 0
+      m_MaskSizeModifier: 0
+      m_UnmaskedControls: []
+    MaskPreset: {fileID: 0}
+  Media:
+    m_ContentType: 0
+    m_Image: {fileID: 2800000, guid: a81752c2da8555649afb3bf2183e0c45, type: 3}
+    m_VideoClip: {fileID: 0}
+    m_Url: https://storage.googleapis.com/learn-media-public/Essentials-Pathway/6.2%20-%20Publish%20to%20WebGL/6.2.3_build-your-project.webm
+    m_AutoStart: 0
+    m_Loop: 0
+--- !u!114 &7807881274511208446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b43af98cf241a48618341008f648cb, type: 3}
+  m_Name: MediaParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.MediaParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 1
+    m_UnmaskedViews: []
+    MaskPreset: {fileID: 0}
+  Media:
+    m_ContentType: 0
+    m_Image: {fileID: 2800000, guid: c3fa55412d2099f47ba5e8876569e9b7, type: 3}
+    m_VideoClip: {fileID: 0}
+    m_Url: 
+    m_AutoStart: 1
+    m_Loop: 1
+--- !u!114 &8464321552878001062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 456c7c2b477e4253b9e4faf9ed4b18a9, type: 3}
+  m_Name: InstructionsParagraph
+  m_EditorClassIdentifier: Unity.Tutorials.Editor::Unity.Tutorials.Editor.Paragraphs.InstructionsParagraph
+  m_MaskingSettings:
+    m_MaskingEnabled: 0
+    m_UnmaskedViews: []
+    MaskPreset: {fileID: 0}
+  Title:
+    m_Untranslated: Instructions
+  Text:
+    m_Untranslated: "<b>1.  Initiate the build:</b>\n\n\_\_\_\_<b>\u2022</b> In the
+      <b>Build Profiles</b> window, select the <b>Build</b> button.\n\nThis will
+      open a file explorer asking you where you want to save your build.\n \n<b>Tip:</b>
+      To stay organized, make a new folder named \u201CWeb Builds\u201D and open
+      it.\n\n\_\_\_\_<b>\u2022</b> If you\u2019re using Windows, the build takes
+      the name of the folder. \n\n\_\_\_\_<b>\u2022</b> On macOS, you\u2019ll need
+      to enter a name for your build, such as \"[YourProjectName] build 1.0\". \n\n\_\_\_\_<b>\u2022</b>
+      Select <b>Select Folder</b> (macOS: <b>Save</b>).\n\n<b>2.  Wait for your build
+      to complete:</b>\n\n\_\_\_\_<b>\u2022</b> This first time your project builds
+      can take up to ten minutes. Subsequent builds will not take as long.\n\n\_\_\_\_<b>\u2022</b>
+      When the process is complete, the folder containing your build will appear.
+      Keep that folder open, as you\u2019ll need it in the next step."
+  m_CriteriaCompletion: 0
+  m_Criteria:
+    m_Items: []
