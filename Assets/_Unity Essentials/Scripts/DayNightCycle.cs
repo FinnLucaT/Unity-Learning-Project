@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class DayNightCycle : MonoBehaviour
 {
+
+
     [SerializeField]
     private float dayDurationInSeconds = 120f;
+
 
     private void Update()
     {
@@ -12,6 +15,6 @@ public class DayNightCycle : MonoBehaviour
         float rotationPerSecond = 360f / dayDurationInSeconds;
 
         // Drehe das Directional Light um die X-Achse
-        transform.Rotate(rotationPerSecond * Time.deltaTime, 0, 0, Space.Self);
+        transform.Rotate(-rotationPerSecond * Time.deltaTime, 0, 0, Space.Self);
     }
 }
