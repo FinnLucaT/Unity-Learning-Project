@@ -546,10 +546,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 956daa938ab234199aebe29b66c6a59f,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9040415487558001679}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 956daa938ab234199aebe29b66c6a59f,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4477668346702971838}
   m_SourcePrefab: {fileID: 100100000, guid: 956daa938ab234199aebe29b66c6a59f, type: 3}
 --- !u!4 &2566090104583905195 stripped
@@ -633,104 +629,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.014024302, y: 0.016763143, z: 0.2823196}
   m_Center: {x: 0.03378067, y: 0.080853455, z: 0.428182}
---- !u!82 &9040415487558001679
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2942897804976981265}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -7211939627185955002, guid: 7efcf782af11b8e41bd4765ec441dd5f,
-    type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &4477668346702971838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,11 +644,14 @@ MonoBehaviour:
   onDeathEffect: {fileID: 9163842254569548763, guid: a64312fe794124baa923bcca22ea4631,
     type: 3}
   onDeathSounds:
-  - {fileID: 8300000, guid: ae81119b63a396b44aec034ca34dffeb, type: 3}
-  - {fileID: 8300000, guid: 3d3f01d7898b78745a6b6bd8e17a24e2, type: 3}
-  - {fileID: 8300000, guid: b9b14af1d954a5e45b8da2371dcab315, type: 3}
-  - {fileID: 8300000, guid: 2e64034778cb3c149aa4bc0ed9ebc791, type: 3}
-  - {fileID: 8300000, guid: 289e24c0f407fe142aaea294cb3f9c5b, type: 3}
+  - {fileID: 8300000, guid: 757f49f68198a014e8a695ccbc8990c9, type: 3}
+  - {fileID: 8300000, guid: 39c1f92704f99fc43a88901b0f02e0cd, type: 3}
+  - {fileID: 8300000, guid: 44d7616b5b9424d4eb4191409919b6fd, type: 3}
+  - {fileID: 8300000, guid: d4a357bafac62d24f8530a19ef4c60d7, type: 3}
+  - {fileID: 8300000, guid: f07284d2dd176d24e8e53e5cc056c66a, type: 3}
+  deathSoundMixerGroup: {fileID: -7211939627185955002, guid: 7efcf782af11b8e41bd4765ec441dd5f,
+    type: 2}
+  effectDuration: 1
   isChasing: 1
   isDoingDamage: 0
   chaseSpeed: 4

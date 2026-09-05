@@ -1,12 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
+public enum EnemyType
+{
+    EnemyNormal,
+    EnemyElite,
+    EnemyBoss
+}
+
 public class EnemySpawner : MonoBehaviour
 {
+    [Tooltip("The Enemy type to spawn.")]
+    public EnemyType enemyTypeToSpawn = EnemyType.EnemyNormal;
 
-
-    [Tooltip("The Enemy that will be spawned.")]
-    public GameObject enemyType;
+    [Tooltip("Array of enemy prefabs corresponding to EnemyType enum.")]
+    public GameObject[] enemyPrefabs = new GameObject[3];
 
     [Tooltip("The rate at which enemies spawn (per second).")]
     public float spawnRate = 1f;
@@ -17,20 +25,17 @@ public class EnemySpawner : MonoBehaviour
 
     private float spawnTimer = 0f;
 
-
     void Update()
     {
-
         if (isActive)
             SpawnEnemy();
-
     }
-
 
     private void SpawnEnemy()
     {
+        GameObject enemyPrefab = enemyPrefabs[(int)enemyTypeToSpawn];
 
-        if (enemyType == null)
+        if (enemyPrefab == null)
             return;
 
         float spawnInterval = 1f / spawnRate;
@@ -38,25 +43,17 @@ public class EnemySpawner : MonoBehaviour
 
         if (spawnTimer >= spawnInterval)
         {
+            GameObject enemyInstance = Instantiate(enemyPrefab, transform.position, transform.rotation);
 
-            GameObject enemyInstance = Instantiate(enemyType, transform.position, transform.rotation);
             if (enemyDoesDamage)
             {
-
                 enemyInstance.GetComponent<EnemyBehaviour>().isDoingDamage = true;
 
                 if (enableCustomDamage)
                     enemyInstance.GetComponent<EnemyBehaviour>().damageDealt = enemyCustomDamage;
-
             }
-            else
-                enemyInstance.GetComponent<EnemyBehaviour>().isDoingDamage = false;
 
             spawnTimer = 0f;
-
         }
-
     }
-
-    
 }
