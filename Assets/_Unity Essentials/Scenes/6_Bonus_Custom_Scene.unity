@@ -588,8 +588,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43de82263456d8b44b36b117c8860511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyType: {fileID: 2942897804976981265, guid: 68a0d586faa19c44d85df3384585185e,
-    type: 3}
+  enemyTypeToSpawn: 0
+  enemyPrefabs:
+  - {fileID: 2942897804976981265, guid: 68a0d586faa19c44d85df3384585185e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   spawnRate: 1
   isActive: 1
   enemyDoesDamage: 0
