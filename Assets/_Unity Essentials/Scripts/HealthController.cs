@@ -4,14 +4,17 @@ public class HealthController : MonoBehaviour
 {
     public float health = 100f;
 
+    [SerializeField] private DamageNumber damageNumberPrefab;
+
+
     public void TakeDamage(float incomingDamage)
     {
+        Vector3 spawnPosition = transform.position + Vector3.up * 0.6f + Vector3.right * 0.3f;
+
+        DamageNumber damageNumber = Instantiate(damageNumberPrefab, spawnPosition, Quaternion.identity);
+        damageNumber.SetText(incomingDamage);
+
         health -= incomingDamage;
-
-        Debug.Log(gameObject.name + " took " + incomingDamage + " damage and has " + health + " health left!");
-
-        
-
         if (health <= 0)
         {
             OnDeath();

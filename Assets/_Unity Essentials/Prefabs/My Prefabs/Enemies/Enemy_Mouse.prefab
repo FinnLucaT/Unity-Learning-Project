@@ -649,6 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthController
   health: 10
+  damageNumberPrefab: {fileID: 0}
 --- !u!1001 &6620776100897915198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -680,7 +681,7 @@ PrefabInstance:
     - target: {fileID: 2403115349488320898, guid: 334fa97bc05179a489fdb75d73c91a9a,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3319118667385425722, guid: 334fa97bc05179a489fdb75d73c91a9a,
         type: 3}

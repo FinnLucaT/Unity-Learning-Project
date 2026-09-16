@@ -397,6 +397,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthController
   health: 100
+  damageNumberPrefab: {fileID: 8725954279299787555, guid: 72281690b73ba3e4c939c6bbd2937a2b,
+    type: 3}
 --- !u!1 &1337918936
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +519,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2498423410334038473}
+  - {fileID: 1938591559}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1815318735
@@ -776,12 +779,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938591554}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: -12.685, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1783572214}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &2498423410334038470
 GameObject:
@@ -796,7 +799,7 @@ GameObject:
   - component: {fileID: 2498423410334038475}
   - component: {fileID: 2498423410334038476}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -899,9 +902,8 @@ BoxCollider:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1337918939}
   - {fileID: 540472265}
   - {fileID: 1815318737}
   - {fileID: 1783572214}
   - {fileID: 742816958}
-  - {fileID: 1938591559}
-  - {fileID: 1337918939}
