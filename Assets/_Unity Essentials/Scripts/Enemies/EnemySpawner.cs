@@ -25,9 +25,18 @@ public class EnemySpawner : MonoBehaviour
 
     private float spawnTimer = 0f;
 
+    private GameObject player;
+
+    private void Start()
+    {
+        
+    }
+
     void Update()
     {
-        if (isActive)
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        if (isActive && player != null)
             SpawnEnemy();
     }
 

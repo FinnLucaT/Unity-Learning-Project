@@ -3,6 +3,8 @@ using UnityEngine.Audio;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    [SerializeField] private Collider hornCollider;
+
     public GameObject onDeathEffect;
     public float deathEffectDuration = 1f;
     public AudioClip[] onDeathSounds;
@@ -12,13 +14,16 @@ public class EnemyBehaviour : MonoBehaviour
     public bool isDoingDamage = true;
     public float damageDealt = 10f;
 
-    private Transform targetPos;
-    private PlayerCustomScript playerScript;
+    private Transform playerPos;
 
     void Start()
     {
-        targetPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        playerScript = targetPos.GetComponent<PlayerCustomScript>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null)
+        {
+            playerPos = player.transform;
+        }
     }
 
     void Update()
@@ -31,39 +36,56 @@ public class EnemyBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player"))
+            return;
+
+        if (hornCollider.bounds.Intersects(other.bounds))
         {
-            OnPlayerCollision();
+            OnPlayerCollision(other);
         }
     }
 
-
-
     private void ChaseTarget()
     {
-        if (targetPos == null)
+        if (playerPos == null)
             return;
 
-        Vector3 direction = (targetPos.position - transform.position).normalized;
+        Vector3 direction = (playerPos.position - transform.position).normalized;
         Quaternion directionLook = Quaternion.LookRotation(direction);
+
         transform.position += direction * chaseSpeed * Time.deltaTime;
-        transform.rotation = Quaternion.Slerp(transform.rotation, directionLook, chaseSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            directionLook,
+            chaseSpeed * Time.deltaTime
+        );
     }
 
-    private void OnPlayerCollision()
+    private void OnPlayerCollision(Collider other)
     {
-        DamagePlayer();
+        DealDamageOnCollision(other);
         SpawnDeathEffect();
         PlayDeathSound();
 
         Destroy(gameObject);
     }
 
-    private void DamagePlayer()
+    private void DealDamageOnCollision(Collider other)
     {
-        if (isDoingDamage && playerScript != null)
+        if (!isDoingDamage)
+            return;
+
+        HealthController otherHealthController =
+            other.GetComponent<HealthController>();
+
+        if (otherHealthController != null)
         {
-            playerScript.TakeDamage(damageDealt);
+            otherHealthController.TakeDamage(damageDealt);
+
+            if (otherHealthController.health <= 0)
+            {
+                playerPos = null;
+            }
         }
     }
 
@@ -71,7 +93,12 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (onDeathEffect != null)
         {
-            GameObject effect = Instantiate(onDeathEffect, transform.position, Quaternion.identity);
+            GameObject effect = Instantiate(
+                onDeathEffect,
+                transform.position,
+                Quaternion.identity
+            );
+
             Destroy(effect, deathEffectDuration);
         }
     }
@@ -81,16 +108,17 @@ public class EnemyBehaviour : MonoBehaviour
         if (onDeathSounds == null || onDeathSounds.Length == 0)
             return;
 
-        AudioClip clip = onDeathSounds[Random.Range(0, onDeathSounds.Length)];
-        
+        AudioClip clip =
+            onDeathSounds[Random.Range(0, onDeathSounds.Length)];
+
         GameObject audioObject = new GameObject("DeathSound");
         audioObject.transform.position = transform.position;
-        
+
         AudioSource audioSource = audioObject.AddComponent<AudioSource>();
         audioSource.clip = clip;
         audioSource.outputAudioMixerGroup = deathSoundMixerGroup;
         audioSource.Play();
-        
+
         Destroy(audioObject, clip.length);
     }
 }

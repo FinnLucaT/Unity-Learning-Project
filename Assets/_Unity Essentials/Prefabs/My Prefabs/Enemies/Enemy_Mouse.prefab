@@ -542,11 +542,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 956daa938ab234199aebe29b66c6a59f,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5932542767660570554}
+      addedObject: {fileID: 4477668346702971838}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 956daa938ab234199aebe29b66c6a59f,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4477668346702971838}
+      addedObject: {fileID: 4204486665030530899}
   m_SourcePrefab: {fileID: 100100000, guid: 956daa938ab234199aebe29b66c6a59f, type: 3}
 --- !u!4 &2566090104583905195 stripped
 Transform:
@@ -608,27 +608,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.19724226, y: 0.12694651, z: 0.28643084}
   m_Center: {x: 0.028549908, y: 0.0652218, z: 0.24000026}
---- !u!65 &5932542767660570554
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2942897804976981265}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.014024302, y: 0.016763143, z: 0.2823196}
-  m_Center: {x: 0.03378067, y: 0.080853455, z: 0.428182}
 --- !u!114 &4477668346702971838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,8 +620,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc01493423106924fbebff68b2439ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Follow
+  hornCollider: {fileID: 8842866678898409660}
   onDeathEffect: {fileID: 9163842254569548763, guid: a64312fe794124baa923bcca22ea4631,
     type: 3}
+  deathEffectDuration: 1
   onDeathSounds:
   - {fileID: 8300000, guid: 757f49f68198a014e8a695ccbc8990c9, type: 3}
   - {fileID: 8300000, guid: 39c1f92704f99fc43a88901b0f02e0cd, type: 3}
@@ -651,11 +632,23 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f07284d2dd176d24e8e53e5cc056c66a, type: 3}
   deathSoundMixerGroup: {fileID: -7211939627185955002, guid: 7efcf782af11b8e41bd4765ec441dd5f,
     type: 2}
-  effectDuration: 1
   isChasing: 1
-  isDoingDamage: 0
   chaseSpeed: 4
+  isDoingDamage: 0
   damageDealt: 10
+--- !u!114 &4204486665030530899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2942897804976981265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b9a7cb8877212458a38eac187b56cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthController
+  health: 10
 --- !u!1001 &6620776100897915198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -671,6 +664,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1552568958339453240, guid: 334fa97bc05179a489fdb75d73c91a9a,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552568958339453240, guid: 334fa97bc05179a489fdb75d73c91a9a,
+        type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -682,7 +680,7 @@ PrefabInstance:
     - target: {fileID: 2403115349488320898, guid: 334fa97bc05179a489fdb75d73c91a9a,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3319118667385425722, guid: 334fa97bc05179a489fdb75d73c91a9a,
         type: 3}
@@ -790,6 +788,12 @@ Animation:
 --- !u!4 &8497826435980512772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3319118667385425722, guid: 334fa97bc05179a489fdb75d73c91a9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6620776100897915198}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &8842866678898409660 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 2403115349488320898, guid: 334fa97bc05179a489fdb75d73c91a9a,
     type: 3}
   m_PrefabInstance: {fileID: 6620776100897915198}
   m_PrefabAsset: {fileID: 0}
