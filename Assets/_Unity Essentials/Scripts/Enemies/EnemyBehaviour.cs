@@ -15,6 +15,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float damageDealt = 10f;
 
     private Transform playerPos;
+    private float turnSpeed = 5f;
 
     void Start()
     {
@@ -57,17 +58,13 @@ public class EnemyBehaviour : MonoBehaviour
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
             directionLook,
-            chaseSpeed * Time.deltaTime
+            turnSpeed * Time.deltaTime
         );
     }
 
     private void OnPlayerCollision(Collider other)
     {
         DealDamageOnCollision(other);
-        SpawnDeathEffect();
-        PlayDeathSound();
-
-        Destroy(gameObject);
     }
 
     private void DealDamageOnCollision(Collider other)
@@ -89,7 +86,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    private void SpawnDeathEffect()
+    public void SpawnDeathEffect()
     {
         if (onDeathEffect != null)
         {
@@ -103,7 +100,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    private void PlayDeathSound()
+    public void PlayDeathSound()
     {
         if (onDeathSounds == null || onDeathSounds.Length == 0)
             return;

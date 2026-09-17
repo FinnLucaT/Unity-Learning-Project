@@ -1,68 +1,223 @@
-using System.Collections;
+using System;
 using UnityEngine;
 
 public enum EnemyType
 {
-    EnemyNormal,
-    EnemyElite,
-    EnemyBoss
+    EnemyMelee,
+    EnemyRanged
+}
+
+[Serializable]
+public class EnemyPrefabEntry
+{
+    public EnemyType enemyType;
+    public GameObject prefab;
 }
 
 public class EnemySpawner : MonoBehaviour
 {
-    [Tooltip("The Enemy type to spawn.")]
-    public EnemyType enemyTypeToSpawn = EnemyType.EnemyNormal;
+    [Header("Enemy")]
+    [SerializeField] private EnemyType enemyTypeToSpawn = EnemyType.EnemyMelee;
 
-    [Tooltip("Array of enemy prefabs corresponding to EnemyType enum.")]
-    public GameObject[] enemyPrefabs = new GameObject[3];
+    [SerializeField] private EnemyPrefabEntry[] enemyPrefabs;
 
-    [Tooltip("The rate at which enemies spawn (per second).")]
-    public float spawnRate = 1f;
-    public bool isActive = true;
-    public bool enemyDoesDamage = true;
-    public bool enableCustomDamage = false;
-    public float enemyCustomDamage = 10f;
 
-    private float spawnTimer = 0f;
+    [Header("Interval Spawning")]
+    [SerializeField] private bool spawnInInterval = true;
 
+    [Tooltip("The rate at which enemies spawn per second.")]
+    [SerializeField] private float spawnRate = 1f;
+
+
+    [Header("Enemy Settings")]
+    [SerializeField] private bool enableCustomChaseSpeed = false;
+    [SerializeField] private float customChaseSpeed = 1f;
+
+    [SerializeField] private bool enemyDoesDamage = true;
+
+    [SerializeField] private bool enableCustomDamage = false;
+    [SerializeField] private float customDamage = 10f;
+
+
+    private float spawnTimer;
     private GameObject player;
+
 
     private void Start()
     {
-        
+        FindPlayer();
     }
 
-    void Update()
+
+    private void Update()
+    {
+        if (player == null)
+            FindPlayer();
+
+        if (spawnInInterval && player != null)
+            HandleIntervalSpawning();
+    }
+
+
+    private void FindPlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-
-        if (isActive && player != null)
-            SpawnEnemy();
     }
 
-    private void SpawnEnemy()
-    {
-        GameObject enemyPrefab = enemyPrefabs[(int)enemyTypeToSpawn];
 
-        if (enemyPrefab == null)
+    private void HandleIntervalSpawning()
+    {
+        if (spawnRate <= 0f)
             return;
 
-        float spawnInterval = 1f / spawnRate;
         spawnTimer += Time.deltaTime;
 
-        if (spawnTimer >= spawnInterval)
+        float timeBetweenSpawns = 1f / spawnRate;
+
+        if (spawnTimer >= timeBetweenSpawns)
         {
-            GameObject enemyInstance = Instantiate(enemyPrefab, transform.position, transform.rotation);
-
-            if (enemyDoesDamage)
-            {
-                enemyInstance.GetComponent<EnemyBehaviour>().isDoingDamage = true;
-
-                if (enableCustomDamage)
-                    enemyInstance.GetComponent<EnemyBehaviour>().damageDealt = enemyCustomDamage;
-            }
-
+            SpawnEnemy();
             spawnTimer = 0f;
         }
+    }
+
+
+    public void SpawnEnemy(
+        EnemyType? enemyType = null,
+        bool? doesDamage = null,
+        float? customDamage = null,
+        float? customChaseSpeed = null)
+    {
+        if (player == null)
+        {
+            FindPlayer();
+
+            if (player == null)
+                return;
+        }
+
+
+        EnemyType selectedEnemyType =
+            enemyType ?? enemyTypeToSpawn;
+
+        bool selectedDoesDamage =
+            doesDamage ?? enemyDoesDamage;
+
+
+        GameObject enemyPrefab = GetEnemyPrefab(selectedEnemyType);
+
+        if (enemyPrefab == null)
+        {
+            Debug.LogWarning(
+                $"No prefab assigned for enemy type {selectedEnemyType}."
+            );
+
+            return;
+        }
+
+
+        Vector3 direction =
+            player.transform.position - transform.position;
+
+        Quaternion spawnRotation = Quaternion.identity;
+
+        if (direction != Vector3.zero)
+            spawnRotation = Quaternion.LookRotation(direction);
+
+
+        GameObject enemyInstance = Instantiate(
+            enemyPrefab,
+            transform.position,
+            spawnRotation
+        );
+
+
+        EnemyBehaviour enemyBehaviour =
+            enemyInstance.GetComponent<EnemyBehaviour>();
+
+        if (enemyBehaviour == null)
+            return;
+
+
+        enemyBehaviour.isDoingDamage = selectedDoesDamage;
+
+
+        if (customDamage.HasValue)
+        {
+            enemyBehaviour.damageDealt = customDamage.Value;
+        }
+        else if (enableCustomDamage)
+        {
+            enemyBehaviour.damageDealt = this.customDamage;
+        }
+
+
+        if (customChaseSpeed.HasValue)
+        {
+            enemyBehaviour.chaseSpeed = customChaseSpeed.Value;
+        }
+        else if (enableCustomChaseSpeed)
+        {
+            enemyBehaviour.chaseSpeed = this.customChaseSpeed;
+        }
+    }
+
+
+    private GameObject GetEnemyPrefab(EnemyType enemyType)
+    {
+        foreach (EnemyPrefabEntry entry in enemyPrefabs)
+        {
+            if (entry.enemyType == enemyType)
+                return entry.prefab;
+        }
+
+        return null;
+    }
+
+
+    private void OnValidate()
+    {
+        EnemyType[] enemyTypes =
+            (EnemyType[])Enum.GetValues(typeof(EnemyType));
+
+        EnemyPrefabEntry[] updatedEntries =
+            new EnemyPrefabEntry[enemyTypes.Length];
+
+
+        for (int i = 0; i < enemyTypes.Length; i++)
+        {
+            EnemyType type = enemyTypes[i];
+
+            EnemyPrefabEntry existingEntry = null;
+
+
+            if (enemyPrefabs != null)
+            {
+                foreach (EnemyPrefabEntry entry in enemyPrefabs)
+                {
+                    if (entry != null && entry.enemyType == type)
+                    {
+                        existingEntry = entry;
+                        break;
+                    }
+                }
+            }
+
+
+            if (existingEntry != null)
+            {
+                updatedEntries[i] = existingEntry;
+            }
+            else
+            {
+                updatedEntries[i] = new EnemyPrefabEntry
+                {
+                    enemyType = type
+                };
+            }
+        }
+
+
+        enemyPrefabs = updatedEntries;
     }
 }

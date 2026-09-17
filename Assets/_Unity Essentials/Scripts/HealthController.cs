@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class HealthController : MonoBehaviour
@@ -23,6 +24,22 @@ public class HealthController : MonoBehaviour
 
     private void OnDeath()
     {
-        Destroy(gameObject);
+        if (gameObject.tag == "Enemy")
+        {
+            EnemyBehaviour enemyBehaviour = GetComponent<EnemyBehaviour>();
+
+            enemyBehaviour.SpawnDeathEffect();
+            enemyBehaviour.PlayDeathSound();
+            Destroy(gameObject);
+        }
+        else if (gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }   
     }
 }
