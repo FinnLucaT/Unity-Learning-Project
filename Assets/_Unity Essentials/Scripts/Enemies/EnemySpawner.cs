@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum EnemyType
 {
@@ -19,6 +20,10 @@ public class EnemySpawner : MonoBehaviour
     [Header("Enemy")]
     [SerializeField] private EnemyType enemyTypeToSpawn = EnemyType.EnemyMelee;
     [SerializeField] private EnemyPrefabEntry[] enemyPrefabs;
+
+    [Header("Spawn Settings")]
+    [SerializeField] private float spawnCheckRadius = 2f;
+    [SerializeField] private LayerMask blockingLayers;
 
     [Header("Interval Spawning")]
     [SerializeField] private bool spawnInInterval = true;
@@ -47,6 +52,8 @@ public class EnemySpawner : MonoBehaviour
 
         if (spawnInInterval && player != null)
             HandleIntervalSpawning();
+
+        //TriggerSpawn();
     }
 
     private void OnValidate()
@@ -113,6 +120,15 @@ public class EnemySpawner : MonoBehaviour
         float? customDamage = null,
         float? customChaseSpeed = null)
     {
+        bool isBlocked = Physics.CheckSphere(
+            transform.position,
+            spawnCheckRadius,
+            blockingLayers
+        );
+
+        if (isBlocked)
+            return;
+
         if (player == null)
         {
             FindPlayer();
@@ -123,7 +139,6 @@ public class EnemySpawner : MonoBehaviour
 
         EnemyType selectedEnemyType = enemyType ?? enemyTypeToSpawn;
         bool selectedDoesDamage = doesDamage ?? enemyDoesDamage;
-
         GameObject enemyPrefab = GetEnemyPrefab(selectedEnemyType);
 
         if (enemyPrefab == null)
@@ -179,5 +194,11 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void TriggerSpawn()
+    {
+        //if (Keyboard.current.altKey.wasPressedThisFrame)
+            SpawnEnemy();
     }
 }
