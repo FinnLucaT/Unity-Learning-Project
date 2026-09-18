@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem;
 
 public class EnemyController : MonoBehaviour
 {
@@ -46,16 +47,13 @@ public class EnemyController : MonoBehaviour
 
         if (player != null)
         {
-            playerPos = player.transform;
+            playerPos = player.transform.Find("TargetPosition");
         }
     }
 
     private void Update()
     {
-        if (isChasing)
-        {
-            ChaseTarget();
-        }
+        ChaseTarget();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -74,15 +72,22 @@ public class EnemyController : MonoBehaviour
         if (playerPos == null)
             return;
 
-        Vector3 direction = (playerPos.position - transform.position).normalized;
+        Vector3 direction = playerPos.position - transform.Find("Mouse_Body").position;
+        direction.y = 0f;
+        direction = direction.normalized;
+
         Quaternion directionLook = Quaternion.LookRotation(direction);
 
-        transform.position += direction * chaseSpeed * Time.deltaTime;
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
             directionLook,
             turnSpeed * Time.deltaTime
         );
+
+        if (isChasing)
+        {
+            transform.position += direction * chaseSpeed * Time.deltaTime;
+        }
     }
 
     private void OnPlayerCollision(Collider other)
