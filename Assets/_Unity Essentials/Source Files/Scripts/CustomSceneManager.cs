@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class CustomSceneManager : MonoBehaviour
 {
-    // Static reference to the instance of our SceneManager
     public static CustomSceneManager instance;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -12,34 +11,52 @@ public class CustomSceneManager : MonoBehaviour
 
     private void Awake()
     {
-        // Check if instance already exists
         if (instance == null)
         {
-            // If not, set instance to this
             instance = this;
         }
         else if (instance != this)
         {
-            // If instance already exists and it's not this, then destroy this to enforce the singleton.
             Destroy(gameObject);
+            return;
         }
-        
-        // Set this to not be destroyed when reloading scene
+
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Update()
     {
-        // Check if the user is on a non-main scene and presses the Escape key
-        if (SceneManager.GetActiveScene().buildIndex != 0 && Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (SceneManager.GetActiveScene().buildIndex != 0 &&
+            Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            // Load the main scene (assuming the main scene is at build index 0)
             LoadScene(0);
         }
     }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 0 || scene.buildIndex == 1)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
 
-    // General method to load scenes based on build index
     private void LoadScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);

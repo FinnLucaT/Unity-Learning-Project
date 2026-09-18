@@ -551,7 +551,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 956daa938ab234199aebe29b66c6a59f,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4204486665030530899}
+      addedObject: {fileID: 7104142609626298993}
   m_SourcePrefab: {fileID: 100100000, guid: 956daa938ab234199aebe29b66c6a59f, type: 3}
 --- !u!4 &2566090104583905195 stripped
 Transform:
@@ -638,10 +638,10 @@ MonoBehaviour:
   deathSoundMixerGroup: {fileID: -7211939627185955002, guid: 7efcf782af11b8e41bd4765ec441dd5f,
     type: 2}
   isChasing: 1
-  chaseSpeed: 1
-  isDoingDamage: 0
+  chaseSpeed: 2
+  isDoingDamage: 1
   damageDealt: 20
---- !u!114 &4204486665030530899
+--- !u!114 &7104142609626298993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -650,10 +650,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2942897804976981265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0b9a7cb8877212458a38eac187b56cd, type: 3}
+  m_Script: {fileID: 11500000, guid: cdcf01d8c1eaa4e4b84abd98f4c1cabf, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthController
-  health: 25
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  health: 15
   damageNumberPrefab: {fileID: 8725954279299787555, guid: 72281690b73ba3e4c939c6bbd2937a2b,
     type: 3}
 --- !u!1001 &6620776100897915198

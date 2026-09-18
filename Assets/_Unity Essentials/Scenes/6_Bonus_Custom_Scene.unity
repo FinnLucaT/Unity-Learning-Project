@@ -475,9 +475,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7455396205814309964, guid: 57f521d16ae5e4f81953d3d863f3eb91,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1225109928}
+      addedObject: {fileID: 1225109938}
+    - targetCorrespondingSourceObject: {fileID: 7455396205814309964, guid: 57f521d16ae5e4f81953d3d863f3eb91,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1225109937}
   m_SourcePrefab: {fileID: 100100000, guid: 57f521d16ae5e4f81953d3d863f3eb91, type: 3}
---- !u!114 &1225109928
+--- !u!114 &1225109937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -486,9 +490,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 85049047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0b9a7cb8877212458a38eac187b56cd, type: 3}
+  m_Script: {fileID: 11500000, guid: c456d7fd6102eb94ab9e1e6aa8add99c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthController
+  m_EditorClassIdentifier: Assembly-CSharp::CustomPlayerController
+--- !u!114 &1225109938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85049047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdcf01d8c1eaa4e4b84abd98f4c1cabf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
   health: 100
   damageNumberPrefab: {fileID: 8725954279299787555, guid: 72281690b73ba3e4c939c6bbd2937a2b,
     type: 3}
@@ -773,7 +789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43de82263456d8b44b36b117c8860511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyTypeToSpawn: 1
+  enemyTypeToSpawn: 0
   enemyPrefabs:
   - enemyType: 0
     prefab: {fileID: 2942897804976981265, guid: 68a0d586faa19c44d85df3384585185e,

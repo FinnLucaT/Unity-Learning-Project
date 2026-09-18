@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class EnemyBehaviour : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private Collider hornCollider;
-
     public GameObject onDeathEffect;
     public float deathEffectDuration = 1f;
     public AudioClip[] onDeathSounds;
@@ -14,10 +12,35 @@ public class EnemyBehaviour : MonoBehaviour
     public bool isDoingDamage = true;
     public float damageDealt = 10f;
 
+    [SerializeField] private Collider hornCollider;
+
     private Transform playerPos;
+    private Health health;
     private float turnSpeed = 5f;
 
-    void Start()
+    private void OnEnable()
+    {
+        health = GetComponent<Health>();
+
+        if (health != null)
+        {
+            health.EventOnDeath += SpawnDeathEffect;
+            health.EventOnDeath += PlayDeathSound;
+            health.EventOnDeath += DestroyThisGameObject;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (health != null)
+        {
+            health.EventOnDeath -= SpawnDeathEffect;
+            health.EventOnDeath -= PlayDeathSound;
+            health.EventOnDeath -= DestroyThisGameObject;
+        }
+    }
+
+    private void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
@@ -27,7 +50,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (isChasing)
         {
@@ -35,7 +58,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player"))
             return;
@@ -72,17 +95,11 @@ public class EnemyBehaviour : MonoBehaviour
         if (!isDoingDamage)
             return;
 
-        HealthController otherHealthController =
-            other.GetComponent<HealthController>();
+        Health otherHealth = other.GetComponent<Health>();
 
-        if (otherHealthController != null)
+        if (otherHealth != null)
         {
-            otherHealthController.TakeDamage(damageDealt);
-
-            if (otherHealthController.health <= 0)
-            {
-                playerPos = null;
-            }
+            otherHealth.TakeDamage(damageDealt);
         }
     }
 
@@ -105,8 +122,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (onDeathSounds == null || onDeathSounds.Length == 0)
             return;
 
-        AudioClip clip =
-            onDeathSounds[Random.Range(0, onDeathSounds.Length)];
+        AudioClip clip = onDeathSounds[Random.Range(0, onDeathSounds.Length)];
 
         GameObject audioObject = new GameObject("DeathSound");
         audioObject.transform.position = transform.position;
@@ -117,5 +133,10 @@ public class EnemyBehaviour : MonoBehaviour
         audioSource.Play();
 
         Destroy(audioObject, clip.length);
+    }
+
+    private void DestroyThisGameObject()
+    {
+        Destroy(gameObject);
     }
 }
