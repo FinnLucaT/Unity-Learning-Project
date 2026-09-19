@@ -241,11 +241,11 @@ public class EnemySpawner : MonoBehaviour
 
         if (customDamage.HasValue)
         {
-            enemyBehaviour.damageDealt = customDamage.Value;
+            enemyBehaviour.damageDealtMelee = customDamage.Value;
         }
         else if (enableCustomDamage)
         {
-            enemyBehaviour.damageDealt = this.customDamage;
+            enemyBehaviour.damageDealtMelee = this.customDamage;
         }
 
         if (customChaseSpeed.HasValue)

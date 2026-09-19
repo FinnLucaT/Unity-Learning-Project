@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
     public bool isChasing = true;
     public float chaseSpeed = 5f;
     public bool isDoingDamage = true;
-    public float damageDealt = 10f;
+    public float damageDealtMelee = 10f;
 
     private Transform playerPos;
     private Health health;
@@ -107,7 +107,7 @@ public class EnemyController : MonoBehaviour
         
         if (other.TryGetComponent<Health>(out var otherHealthController))
         {
-            otherHealthController.TakeDamage(damageDealt);
+            otherHealthController.TakeDamage(damageDealtMelee);
 
             if (otherHealthController.healthMax <= 0)
             {

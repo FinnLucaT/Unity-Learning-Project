@@ -13,7 +13,6 @@ public class Health : MonoBehaviour
 
     // Inspector-Felder
     [SerializeField] private DamageNumber damageNumberPrefab;
-    [SerializeField] private Image healthBar;
 
     // Private Felder
     private bool isDead = false;
