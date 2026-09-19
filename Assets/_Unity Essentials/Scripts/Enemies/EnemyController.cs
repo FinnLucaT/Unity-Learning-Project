@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
+[RequireComponent(typeof(Health))]
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private Collider hornCollider;
@@ -17,13 +18,13 @@ public class EnemyController : MonoBehaviour
 
     private Transform playerPos;
     private Health health;
-    private float turnSpeed = 5f;
+    private readonly float turnSpeed = 5f;
 
     private void OnEnable()
     {
         health = GetComponent<Health>();
 
-        if (health != null)
+        if (null != health)
         {
             health.EventOnDeath += SpawnDeathEffect;
             health.EventOnDeath += PlayDeathSound;
@@ -33,7 +34,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnDisable()
     {
-        if (health != null)
+        if (null != health)
         {
             health.EventOnDeath -= SpawnDeathEffect;
             health.EventOnDeath -= PlayDeathSound;
@@ -50,7 +51,7 @@ public class EnemyController : MonoBehaviour
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        if (player != null)
+        if (null != player)
         {
             playerPos = player.transform;
         }
@@ -77,7 +78,7 @@ public class EnemyController : MonoBehaviour
 
     private void ChaseTarget()
     {
-        if (playerPos == null)
+        if (null == playerPos)
             return;
 
         Vector3 direction = playerPos.position - mouseBody.transform.position;
@@ -85,7 +86,7 @@ public class EnemyController : MonoBehaviour
         direction.Normalize();
         Quaternion directionLook = Quaternion.LookRotation(direction);
 
-        transform.position += direction * chaseSpeed * Time.deltaTime;
+        transform.position += chaseSpeed * Time.deltaTime * direction;
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
             directionLook,
@@ -103,14 +104,12 @@ public class EnemyController : MonoBehaviour
         if (!isDoingDamage)
             return;
 
-        Health otherHealthController =
-            other.GetComponent<Health>();
-
-        if (otherHealthController != null)
+        
+        if (other.TryGetComponent<Health>(out var otherHealthController))
         {
             otherHealthController.TakeDamage(damageDealt);
 
-            if (otherHealthController.health <= 0)
+            if (otherHealthController.healthMax <= 0)
             {
                 playerPos = null;
             }
@@ -119,7 +118,7 @@ public class EnemyController : MonoBehaviour
 
     public void SpawnDeathEffect(GameObject deadObject)
     {
-        if (onDeathEffect != null)
+        if (null != onDeathEffect)
         {
             GameObject effect = Instantiate(
                 onDeathEffect,
@@ -133,13 +132,13 @@ public class EnemyController : MonoBehaviour
 
     public void PlayDeathSound(GameObject deadObject)
     {
-        if (onDeathSounds == null || onDeathSounds.Length == 0)
+        if (null == onDeathSounds || onDeathSounds.Length == 0)
             return;
 
         AudioClip clip =
             onDeathSounds[Random.Range(0, onDeathSounds.Length)];
 
-        GameObject audioObject = new GameObject("DeathSound");
+        GameObject audioObject = new ("DeathSound");
         audioObject.transform.position = deadObject.transform.position;
 
         AudioSource audioSource = audioObject.AddComponent<AudioSource>();

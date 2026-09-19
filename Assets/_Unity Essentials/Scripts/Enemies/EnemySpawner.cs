@@ -218,7 +218,7 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        Vector3 direction = player.transform.position - transform.position;
+        Vector3 direction = player.transform.position - (spawnPos ?? transform.position);
         Quaternion spawnRotation = Quaternion.identity;
 
         if (direction != Vector3.zero)

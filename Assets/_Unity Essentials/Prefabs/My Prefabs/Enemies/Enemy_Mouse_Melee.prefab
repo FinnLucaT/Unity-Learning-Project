@@ -659,7 +659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdcf01d8c1eaa4e4b84abd98f4c1cabf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  health: 15
+  healthMax: 100
   damageNumberPrefab: {fileID: 8725954279299787555, guid: 72281690b73ba3e4c939c6bbd2937a2b,
     type: 3}
 --- !u!1 &7792452030402323708 stripped

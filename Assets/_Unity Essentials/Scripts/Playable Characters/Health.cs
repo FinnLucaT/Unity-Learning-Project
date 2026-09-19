@@ -4,7 +4,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     // Öffentliche Felder / Properties
-    public float health = 100f;
+    public float healthMax = 100f;
 
     // Events
     public event Action<GameObject> EventOnDeath;
@@ -14,21 +14,15 @@ public class Health : MonoBehaviour
 
     // Private Felder
     private bool isDead = false;
+    private float health;
 
 
     // Unity-Methoden
     private void Awake()
     {
-
+        health = healthMax;
     }
 
-    private void Update()
-    {
-
-    }
-
-
-    // Öffentliche Methoden
     public void TakeDamage(float incomingDamage)
     {
         if (isDead)
@@ -47,9 +41,9 @@ public class Health : MonoBehaviour
 
         damageNumber.SetText(incomingDamage);
 
-        health -= incomingDamage;
+        healthMax -= incomingDamage;
 
-        if (health <= 0)
+        if (healthMax <= 0)
         {
             isDead = true;
             OnDeath();
