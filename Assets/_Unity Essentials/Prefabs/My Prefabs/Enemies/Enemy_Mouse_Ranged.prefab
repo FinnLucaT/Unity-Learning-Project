@@ -630,6 +630,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc01493423106924fbebff68b2439ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Follow
+  hornCollider: {fileID: 8842866678898409660}
+  mouseBody: {fileID: 7792452030402323708}
   onDeathEffect: {fileID: 9163842254569548763, guid: a64312fe794124baa923bcca22ea4631,
     type: 3}
   deathEffectDuration: 1
@@ -642,10 +644,9 @@ MonoBehaviour:
   deathSoundMixerGroup: {fileID: -7211939627185955002, guid: 7efcf782af11b8e41bd4765ec441dd5f,
     type: 2}
   isChasing: 1
-  chaseSpeed: 1
+  chaseSpeed: 0.25
   isDoingDamage: 1
   damageDealt: 20
-  hornCollider: {fileID: 8842866678898409660}
 --- !u!114 &7104142609626298993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,6 +662,12 @@ MonoBehaviour:
   health: 25
   damageNumberPrefab: {fileID: 8725954279299787555, guid: 72281690b73ba3e4c939c6bbd2937a2b,
     type: 3}
+--- !u!1 &7792452030402323708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4021021834399589188, guid: 956daa938ab234199aebe29b66c6a59f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2600314384221943872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6620776100897915198
 PrefabInstance:
   m_ObjectHideFlags: 0

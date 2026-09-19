@@ -4,6 +4,7 @@ using UnityEngine.Audio;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private Collider hornCollider;
+    [SerializeField] private GameObject mouseBody;
 
     public GameObject onDeathEffect;
     public float deathEffectDuration = 1f;
@@ -79,7 +80,9 @@ public class EnemyController : MonoBehaviour
         if (playerPos == null)
             return;
 
-        Vector3 direction = (playerPos.position - transform.position).normalized;
+        Vector3 direction = playerPos.position - mouseBody.transform.position;
+        direction.y = 0f;
+        direction.Normalize();
         Quaternion directionLook = Quaternion.LookRotation(direction);
 
         transform.position += direction * chaseSpeed * Time.deltaTime;
