@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &838631514765972037
+--- !u!1 &8683086526370313946
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6538508410137863470}
-  - component: {fileID: 4273694576151513924}
-  - component: {fileID: 4871774118370515831}
-  - component: {fileID: 8490359169160837435}
-  - component: {fileID: 1609397850629159503}
+  - component: {fileID: 2673292183235748995}
+  - component: {fileID: 5642410984823234384}
+  - component: {fileID: 3880392924605983370}
+  - component: {fileID: 7209821118054379989}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6538508410137863470
+--- !u!4 &2673292183235748995
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838631514765972037}
+  m_GameObject: {fileID: 8683086526370313946}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.22, y: 0, z: 13.37}
+  m_LocalPosition: {x: -7.47, y: 0, z: -4.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4273694576151513924
+--- !u!33 &5642410984823234384
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838631514765972037}
+  m_GameObject: {fileID: 8683086526370313946}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4871774118370515831
+--- !u!23 &3880392924605983370
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838631514765972037}
+  m_GameObject: {fileID: 8683086526370313946}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -68,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b9fdfafaa8973448bb237391d9ab4c76, type: 2}
+  - {fileID: 2100000, guid: 8d4f83738c619484db43198ae530fd26, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,13 +91,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8490359169160837435
+--- !u!136 &7209821118054379989
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838631514765972037}
+  m_GameObject: {fileID: 8683086526370313946}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -115,35 +114,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1609397850629159503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838631514765972037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43de82263456d8b44b36b117c8860511, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  waveManager: {fileID: 0}
-  enemyTypeToSpawn: 0
-  enemyPrefabs:
-  - enemyType: 0
-    prefab: {fileID: 2942897804976981265, guid: 68a0d586faa19c44d85df3384585185e,
-      type: 3}
-  - enemyType: 1
-    prefab: {fileID: 2942897804976981265, guid: 7bc23b051b4ea4a4daac7ed0bfdb2fe4,
-      type: 3}
-  spawnCheckRadius: 10
-  blockingLayers:
-    serializedVersion: 2
-    m_Bits: 192
-  spawnInInterval: 0
-  spawnRate: 0.25
-  enableCustomChaseSpeed: 0
-  customChaseSpeed: 1
-  enemyDoesDamage: 1
-  enableCustomDamage: 0
-  customDamage: 10

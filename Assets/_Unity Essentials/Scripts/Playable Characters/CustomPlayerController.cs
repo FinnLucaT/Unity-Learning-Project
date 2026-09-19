@@ -24,12 +24,12 @@ public class CustomPlayerController : MonoBehaviour
         }
     }
 
-    private void DestroyThisGameObject()
+    private void DestroyThisGameObject(GameObject deadObject)
     {
-        Destroy(gameObject);
+        Destroy(deadObject);
     }
 
-    private void LoadScene()
+    private void LoadScene(GameObject deadObject)
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }

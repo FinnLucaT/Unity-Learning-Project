@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     public float health = 100f;
 
     // Events
-    public event Action EventOnDeath;
+    public event Action<GameObject> EventOnDeath;
 
     // Inspector-Felder
     [SerializeField] private DamageNumber damageNumberPrefab;
@@ -60,6 +60,6 @@ public class Health : MonoBehaviour
     // Private Methoden
     private void OnDeath()
     {
-        EventOnDeath?.Invoke();
+        EventOnDeath?.Invoke(gameObject);
     }
 }

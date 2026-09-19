@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.InputSystem;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] private Collider hornCollider;
+
     public GameObject onDeathEffect;
     public float deathEffectDuration = 1f;
     public AudioClip[] onDeathSounds;
@@ -12,8 +13,6 @@ public class EnemyController : MonoBehaviour
     public float chaseSpeed = 5f;
     public bool isDoingDamage = true;
     public float damageDealt = 10f;
-
-    [SerializeField] private Collider hornCollider;
 
     private Transform playerPos;
     private Health health;
@@ -41,22 +40,30 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void DestroyThisGameObject(GameObject deadObject)
+    {
+        Destroy(deadObject);
+    }
+
+    void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         if (player != null)
         {
-            playerPos = player.transform.Find("TargetPosition");
+            playerPos = player.transform;
         }
     }
 
-    private void Update()
+    void Update()
     {
-        ChaseTarget();
+        if (isChasing)
+        {
+            ChaseTarget();
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player"))
             return;
@@ -72,22 +79,15 @@ public class EnemyController : MonoBehaviour
         if (playerPos == null)
             return;
 
-        Vector3 direction = playerPos.position - transform.Find("Mouse_Body").position;
-        direction.y = 0f;
-        direction = direction.normalized;
-
+        Vector3 direction = (playerPos.position - transform.position).normalized;
         Quaternion directionLook = Quaternion.LookRotation(direction);
 
+        transform.position += direction * chaseSpeed * Time.deltaTime;
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
             directionLook,
             turnSpeed * Time.deltaTime
         );
-
-        if (isChasing)
-        {
-            transform.position += direction * chaseSpeed * Time.deltaTime;
-        }
     }
 
     private void OnPlayerCollision(Collider other)
@@ -100,21 +100,27 @@ public class EnemyController : MonoBehaviour
         if (!isDoingDamage)
             return;
 
-        Health otherHealth = other.GetComponent<Health>();
+        Health otherHealthController =
+            other.GetComponent<Health>();
 
-        if (otherHealth != null)
+        if (otherHealthController != null)
         {
-            otherHealth.TakeDamage(damageDealt);
+            otherHealthController.TakeDamage(damageDealt);
+
+            if (otherHealthController.health <= 0)
+            {
+                playerPos = null;
+            }
         }
     }
 
-    public void SpawnDeathEffect()
+    public void SpawnDeathEffect(GameObject deadObject)
     {
         if (onDeathEffect != null)
         {
             GameObject effect = Instantiate(
                 onDeathEffect,
-                transform.position,
+                deadObject.transform.position,
                 Quaternion.identity
             );
 
@@ -122,15 +128,16 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void PlayDeathSound()
+    public void PlayDeathSound(GameObject deadObject)
     {
         if (onDeathSounds == null || onDeathSounds.Length == 0)
             return;
 
-        AudioClip clip = onDeathSounds[Random.Range(0, onDeathSounds.Length)];
+        AudioClip clip =
+            onDeathSounds[Random.Range(0, onDeathSounds.Length)];
 
         GameObject audioObject = new GameObject("DeathSound");
-        audioObject.transform.position = transform.position;
+        audioObject.transform.position = deadObject.transform.position;
 
         AudioSource audioSource = audioObject.AddComponent<AudioSource>();
         audioSource.clip = clip;
@@ -138,10 +145,5 @@ public class EnemyController : MonoBehaviour
         audioSource.Play();
 
         Destroy(audioObject, clip.length);
-    }
-
-    private void DestroyThisGameObject()
-    {
-        Destroy(gameObject);
     }
 }

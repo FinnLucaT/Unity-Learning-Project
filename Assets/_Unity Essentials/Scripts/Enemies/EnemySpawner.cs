@@ -1,6 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public enum EnemyType
 {
@@ -17,11 +18,16 @@ public class EnemyPrefabEntry
 
 public class EnemySpawner : MonoBehaviour
 {
+    [Header("Wave Settings")]
+    [SerializeField] private EnemyWaveManager waveManager;
+
     [Header("Enemy")]
     [SerializeField] private EnemyType enemyTypeToSpawn = EnemyType.EnemyMelee;
     [SerializeField] private EnemyPrefabEntry[] enemyPrefabs;
 
     [Header("Spawn Settings")]
+    [SerializeField] private GameObject[] spawnPoints;
+    [SerializeField] private float spawnDelay = 1f;
     [SerializeField] private float spawnCheckRadius = 2f;
     [SerializeField] private LayerMask blockingLayers;
 
@@ -37,8 +43,22 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private bool enableCustomDamage = false;
     [SerializeField] private float customDamage = 10f;
 
+    public event Action<GameObject> OnWaveEnemySpawned;
+    public event Action OnWaveSpawningFinished;
+
     private float spawnTimer;
     private GameObject player;
+
+
+    private void OnEnable()
+    {
+        waveManager.OnWaveStarted += SpawnEnemyWave;
+    }
+
+    private void OnDisable()
+    {
+        waveManager.OnWaveStarted -= SpawnEnemyWave;
+    }
 
     private void Start()
     {
@@ -51,9 +71,7 @@ public class EnemySpawner : MonoBehaviour
             FindPlayer();
 
         if (spawnInInterval && player != null)
-            HandleIntervalSpawning();
-
-        //TriggerSpawn();
+            SpawnEnemyInInterval();
     }
 
     private void OnValidate()
@@ -99,7 +117,7 @@ public class EnemySpawner : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void HandleIntervalSpawning()
+    private void SpawnEnemyInInterval()
     {
         if (spawnRate <= 0f)
             return;
@@ -114,14 +132,67 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    private void SpawnEnemyWave(EnemyWave wave)
+    {
+        StartCoroutine(SpawnEnemyWaveCoroutine(wave));
+    }
+
+    private IEnumerator SpawnEnemyWaveCoroutine(EnemyWave wave)
+    {
+        List<EnemyType> enemiesToSpawn = new List<EnemyType>();
+
+        foreach (WaveContent content in wave.waveContent)
+        {
+            for (int i = 0; i < content.numberToSpawn; i++)
+            {
+                enemiesToSpawn.Add(content.enemyType);
+            }
+        }
+
+        for (int i = enemiesToSpawn.Count - 1; i > 0; i--)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, i + 1);
+
+            EnemyType temp = enemiesToSpawn[i];
+            enemiesToSpawn[i] = enemiesToSpawn[randomIndex];
+            enemiesToSpawn[randomIndex] = temp;
+        }
+
+        foreach (EnemyType enemyType in enemiesToSpawn)
+        {
+            Vector3 position;
+            bool isBlocked;
+
+            do
+            {
+                position = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)].transform.position;
+
+                isBlocked = Physics.CheckSphere(
+                    position,
+                    spawnCheckRadius,
+                    blockingLayers
+                );
+
+            } while (isBlocked);
+
+            SpawnEnemy(enemyType: enemyType, spawnPos: position, isWaveEnemy: true);
+
+            yield return new WaitForSeconds(spawnDelay);
+        }
+
+        OnWaveSpawningFinished?.Invoke();
+    }
+
     public void SpawnEnemy(
         EnemyType? enemyType = null,
+        Vector3? spawnPos = null,
         bool? doesDamage = null,
         float? customDamage = null,
-        float? customChaseSpeed = null)
+        float? customChaseSpeed = null,
+        bool isWaveEnemy = false)
     {
         bool isBlocked = Physics.CheckSphere(
-            transform.position,
+            spawnPos ?? transform.position,
             spawnCheckRadius,
             blockingLayers
         );
@@ -155,9 +226,11 @@ public class EnemySpawner : MonoBehaviour
 
         GameObject enemyInstance = Instantiate(
             enemyPrefab,
-            transform.position,
+            spawnPos ?? transform.position,
             spawnRotation
         );
+        if (isWaveEnemy)
+            OnWaveEnemySpawned?.Invoke(enemyInstance);
 
         EnemyController enemyBehaviour = enemyInstance.GetComponent<EnemyController>();
 
@@ -194,11 +267,5 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return null;
-    }
-
-    private void TriggerSpawn()
-    {
-        //if (Keyboard.current.altKey.wasPressedThisFrame)
-            SpawnEnemy();
     }
 }
