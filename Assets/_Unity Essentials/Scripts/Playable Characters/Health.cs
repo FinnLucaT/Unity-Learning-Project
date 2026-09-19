@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -8,9 +9,11 @@ public class Health : MonoBehaviour
 
     // Events
     public event Action<GameObject> EventOnDeath;
+    public event Action<float, float> EventOnHealthChanged;
 
     // Inspector-Felder
     [SerializeField] private DamageNumber damageNumberPrefab;
+    [SerializeField] private Image healthBar;
 
     // Private Felder
     private bool isDead = false;
@@ -41,9 +44,11 @@ public class Health : MonoBehaviour
 
         damageNumber.SetText(incomingDamage);
 
-        healthMax -= incomingDamage;
+        health -= incomingDamage;
 
-        if (healthMax <= 0)
+        EventOnHealthChanged?.Invoke(health, healthMax);
+
+        if (health <= 0)
         {
             isDead = true;
             OnDeath();
