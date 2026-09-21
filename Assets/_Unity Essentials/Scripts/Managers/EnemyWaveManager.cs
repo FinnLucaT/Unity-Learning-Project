@@ -96,7 +96,7 @@ public class EnemyWaveManager : MonoBehaviour
         );
 
         if (
-            isPlayerInRange &&
+            //isPlayerInRange &&
             Keyboard.current.eKey.wasPressedThisFrame &&
             !isWaveActive
         )
