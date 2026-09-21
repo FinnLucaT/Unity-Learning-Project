@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
     // Private Felder
     private bool isDead = false;
     private float health;
+    private Vector3 damageNumberSpawnPosition;
 
 
     // Unity-Methoden
@@ -30,14 +31,29 @@ public class Health : MonoBehaviour
         if (isDead)
             return;
 
-        Vector3 spawnPosition =
-            transform.position +
-            Vector3.up * 0.6f +
-            Vector3.right * 0.3f;
+        if (gameObject.CompareTag("Player"))
+        {
+            damageNumberSpawnPosition =
+                transform.position +
+                Vector3.up * 0.6f +
+                Vector3.right * 0.3f;
+        }
+        else if (gameObject.CompareTag("Enemy"))
+        {
+            damageNumberSpawnPosition =
+                transform.position +
+                Vector3.up * 2f +
+                Vector3.left * 0.3f;
+        }
+        else
+        {
+            damageNumberSpawnPosition = transform.position + Vector3.up * 0.6f;
+        }
+
 
         DamageNumber damageNumber = Instantiate(
             damageNumberPrefab,
-            spawnPosition,
+            damageNumberSpawnPosition,
             Quaternion.identity
         );
 
