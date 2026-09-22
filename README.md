@@ -4,6 +4,8 @@ Ein Unity-Lernprojekt, mit dem ich meine Kenntnisse in C# und Spieleentwicklung 
 
 Das Projekt basiert auf einer Unity-Lernumgebung, die ich im Laufe des Tutorials bearbeitet und anschließend mit eigenen Funktionen und Anpassungen erweitert habe.
 
+Link to play it yourself: https://play.unity.com/en/games/ef908c15-2644-4999-ba1d-5833da77ee8a/unity-essentials-finn-luca-t
+
 ## Screenshots
 
 ### Szenenauswahl
