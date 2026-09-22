@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CustomPlayerController : MonoBehaviour
 {
@@ -21,6 +22,14 @@ public class CustomPlayerController : MonoBehaviour
         {
             health.EventOnDeath -= DestroyThisGameObject;
             health.EventOnDeath -= LoadScene;
+        }
+    }
+
+    private void Update()
+    {
+        if (Keyboard.current.qKey.wasPressedThisFrame)
+        {
+            health.ToggleInvincibility();
         }
     }
 

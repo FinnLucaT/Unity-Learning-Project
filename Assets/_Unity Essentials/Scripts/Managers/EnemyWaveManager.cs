@@ -16,13 +16,14 @@ public class EnemyWaveManager : MonoBehaviour
     [SerializeField] private EnemyWave[] enemyWaves;
 
     public event Action<EnemyWave> OnWaveStarted;
+    public event Action<int, int> OnWaveNumberChanged;
+    public event Action OnWaveFinished;
+    public event Action OnAllWavesCompleted;
 
     private int currentWave = 0;
     private bool isWaveActive = false;
-    private bool hasLastWaveEnded = false;
     private bool hasFinishedSpawning = false;
 
-    private int enemiesAlive = 0;
     private List<GameObject> aliveEnemies = new List<GameObject>();
 
     private void OnEnable()
@@ -43,10 +44,27 @@ public class EnemyWaveManager : MonoBehaviour
             StartWave();
     }
 
+    private void StartWave()
+    {
+        if (currentWave >= enemyWaves.Length)
+        {
+            Debug.Log("All waves have already been completed.");
+            return;
+        }
+
+        currentWave++;
+
+        isWaveActive = true;
+        hasFinishedSpawning = false;
+        aliveEnemies.Clear();
+
+        OnWaveStarted?.Invoke(enemyWaves[currentWave - 1]);
+        OnWaveNumberChanged?.Invoke(currentWave, enemyWaves.Length);
+    }
+
     private void AddAliveEnemy(GameObject enemy)
     {
         aliveEnemies.Add(enemy);
-        enemiesAlive++;
 
         Health health = enemy.GetComponent<Health>();
 
@@ -57,7 +75,6 @@ public class EnemyWaveManager : MonoBehaviour
     private void RemoveAliveEnemy(GameObject enemy)
     {
         aliveEnemies.Remove(enemy);
-        enemiesAlive--;
 
         Health health = enemy.GetComponent<Health>();
 
@@ -70,13 +87,12 @@ public class EnemyWaveManager : MonoBehaviour
     private void WaveSpawningFinished()
     {
         hasFinishedSpawning = true;
-
         CheckWaveCompleted();
     }
 
     private void CheckWaveCompleted()
     {
-        if (hasFinishedSpawning && enemiesAlive == 0)
+        if (hasFinishedSpawning && aliveEnemies.Count == 0)
             EndWave();
     }
 
@@ -84,7 +100,13 @@ public class EnemyWaveManager : MonoBehaviour
     {
         isWaveActive = false;
 
+        OnWaveFinished?.Invoke();
         Debug.Log($"Wave {currentWave} completed!");
+
+        if (currentWave >= enemyWaves.Length)
+        {
+            OnAllWavesCompleted?.Invoke();
+        }
     }
 
     private bool IsPlayerStartingNextWave()
@@ -95,41 +117,9 @@ public class EnemyWaveManager : MonoBehaviour
             playerLayer
         );
 
-        if (
-            //isPlayerInRange &&
-            Keyboard.current.eKey.wasPressedThisFrame &&
-            !isWaveActive
-        )
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    private void StartWave()
-    {
-        if (hasLastWaveEnded)
-        {
-            Debug.Log("All waves have already been completed.");
-            return;
-        }
-
-        currentWave++;
-
-        if (currentWave > enemyWaves.Length)
-        {
-            Debug.Log("All waves completed!");
-            hasLastWaveEnded = true;
-            return;
-        }
-
-        isWaveActive = true;
-        hasFinishedSpawning = false;
-        enemiesAlive = 0;
-        aliveEnemies.Clear();
-
-        OnWaveStarted?.Invoke(enemyWaves[currentWave - 1]);
+        return //isPlayerInRange &&
+               Keyboard.current.eKey.wasPressedThisFrame &&
+               !isWaveActive;
     }
 }
 

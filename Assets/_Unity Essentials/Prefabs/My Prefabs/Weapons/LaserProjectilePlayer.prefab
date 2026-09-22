@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6219a551eb5daab4ea63bdf931a4f176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LaserProjectile
-  speed: 15
-  audio: {fileID: 0}
+  speed: 40
 --- !u!54 &4264396753547958685
 Rigidbody:
   m_ObjectHideFlags: 0

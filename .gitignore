@@ -106,3 +106,7 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# Suno Free music - local use only
+Assets/_Unity Essentials/Audio/Music/Music_Bonus Scene.mp3
+Assets/_Unity Essentials/Audio/Music/Music_Bonus Scene.mp3.meta

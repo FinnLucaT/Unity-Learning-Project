@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -10,12 +9,14 @@ public class Health : MonoBehaviour
     // Events
     public event Action<GameObject> EventOnDeath;
     public event Action<float, float> EventOnHealthChanged;
+    public event Action<bool> EventOnInvincibilityChanged;
 
     // Inspector-Felder
     [SerializeField] private DamageNumber damageNumberPrefab;
 
     // Private Felder
     private bool isDead = false;
+    private bool isInvincible = false;
     private float health;
     private Vector3 damageNumberSpawnPosition;
 
@@ -26,9 +27,11 @@ public class Health : MonoBehaviour
         health = healthMax;
     }
 
+
+    // Öffentliche Methoden
     public void TakeDamage(float incomingDamage)
     {
-        if (isDead)
+        if (isDead || isInvincible)
             return;
 
         if (gameObject.CompareTag("Player"))
@@ -47,9 +50,10 @@ public class Health : MonoBehaviour
         }
         else
         {
-            damageNumberSpawnPosition = transform.position + Vector3.up * 0.6f;
+            damageNumberSpawnPosition =
+                transform.position +
+                Vector3.up * 0.6f;
         }
-
 
         DamageNumber damageNumber = Instantiate(
             damageNumberPrefab,
@@ -68,6 +72,14 @@ public class Health : MonoBehaviour
             isDead = true;
             OnDeath();
         }
+    }
+
+    public void ToggleInvincibility()
+    {
+        isInvincible = !isInvincible;
+        EventOnInvincibilityChanged?.Invoke(isInvincible);
+
+        Debug.Log($"Invincibility: {isInvincible}");
     }
 
 
