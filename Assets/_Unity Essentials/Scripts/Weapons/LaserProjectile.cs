@@ -4,6 +4,7 @@ public class LaserProjectile : MonoBehaviour
 {
     [SerializeField] private float speed = 15f;
 
+    private bool hasHit;
     private float damage;
     private float remainingRange;
     private string ignoredTag;
@@ -30,9 +31,15 @@ public class LaserProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (hasHit)
+            return;
+
         Health health = other.GetComponentInParent<Health>();
+
         if (health != null && !other.CompareTag(ignoredTag))
         {
+            hasHit = true;
+
             health.TakeDamage(damage);
             Destroy(gameObject);
         }

@@ -3,18 +3,16 @@ using UnityEngine.InputSystem;
 
 public class LaserPlayer : LaserWeapon
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    [SerializeField] private float shootingInterval = 0.1f;
 
-    }
+    private float nextShotTime;
 
-    // Update is called once per frame
     private void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Mouse.current.leftButton.wasPressedThisFrame && Time.time >= nextShotTime)
         {
             Shoot();
+            nextShotTime = Time.time + shootingInterval;
         }
     }
 }
