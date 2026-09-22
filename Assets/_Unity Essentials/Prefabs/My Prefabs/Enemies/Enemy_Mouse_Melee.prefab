@@ -917,7 +917,7 @@ MonoBehaviour:
   deathSoundMixerGroup: {fileID: -7211939627185955002, guid: 7efcf782af11b8e41bd4765ec441dd5f,
     type: 2}
   isChasing: 1
-  chaseSpeed: 2.5
+  chaseSpeed: 4
   isDoingDamage: 1
   damageDealtMelee: 10
 --- !u!114 &7104142609626298993
