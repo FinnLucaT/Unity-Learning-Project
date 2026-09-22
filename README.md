@@ -35,6 +35,12 @@ Unter anderem habe ich folgende Funktionen umgesetzt bzw. angepasst:
 - Animationen und kleinere Umgebungseffekte
 - Eigene Anpassungen an verschiedenen Spielszenen
 
+### Bonus Scene Music
+
+The bonus scene uses a custom music track that is not included in this repository.
+The track was generated with Suno using the free plan and is used only for personal, non-commercial purposes. To avoid distributing the audio file through this repository, it is excluded via `.gitignore`.
+As a result, the bonus scene may have missing background music when the project is cloned.
+
 ## Verwendete Technologien
 
 - C#
